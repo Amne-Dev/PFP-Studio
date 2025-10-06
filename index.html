@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PFP Studio — Fabric.js</title>
+  <link rel="stylesheet" href="style/main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header><h1>PFP Studio</h1></header>
+
+    <div class="layout">
+      <div class="panel panel-right">
+        <h2>Backgrounds</h2>
+        <div class="defaults">
+          <div class="thumb" data-src="assets/linkedin.png"><img src="assets/linkedin.png" alt="LinkedIn"></div>
+          <div class="thumb" data-src="assets/instagram.png"><img src="assets/instagram.png" alt="Instagram"></div>
+          <div class="thumb" data-src="assets/twitter.png"><img src="assets/twitter.png" alt="Twitter"></div>
+          <div class="thumb" data-src="assets/discord.png"><img src="assets/discord.png" alt="Discord"></div>
+        </div>
+
+        <label class="file-btn">Upload Background
+          <input type="file" id="bgUpload" accept="image/*">
+        </label>
+
+        <h2>Filters</h2>
+        <div class="control"><label>Saturation <input type="range" id="sat" min="-1" max="1" step="0.01" value="0"></label></div>
+        <div class="control"><label>Brightness <input type="range" id="bright" min="-1" max="1" step="0.01" value="0"></label></div>
+        <div class="control"><label>Contrast <input type="range" id="contrast" min="-1" max="1" step="0.01" value="0"></label></div>
+        <div class="control-row"><label><input type="checkbox" id="invert"> Invert Colors</label></div>
+
+        <h2>Stickers</h2>
+        <label class="file-btn">Upload Sticker
+          <input type="file" id="stickerUpload" accept="image/*">
+        </label>
+        <button id="addText">Add Text</button>
+
+        <div id="textControls" class="selected-controls" style="display:none">
+            <label>Font:
+                <select id="textFont">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                </select>
+            </label>
+            <label>Size: <input type="number" id="textSize" min="8" max="120" value="32"/></label>
+            <label>Weight:
+                <select id="textWeight">
+                <option value="normal">Normal</option>
+                <option value="bold">Bold</option>
+                <option value="lighter">Lighter</option>
+                </select>
+            </label>
+            <label>Color: <input type="color" id="textColor" value="#ffffff"/></label>
+        </div>
+
+
+      </div>
+
+      <div class="canvas-wrap">
+        <div id="canvasContainer">
+          <canvas id="pfpCanvas" width="800" height="800"></canvas>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Backgrounds</h2>
+        <div class="defaults">
+          <div class="thumb" data-src="assets/evernight.png"><img src="assets/evernight.png" alt="Evernight"></div>
+          <div class="thumb" data-src="assets/fugue.png"><img src="assets/fugue.png" alt="Fugue"></div>
+          <div class="thumb" data-src="assets/thelema.png"><img src="assets/thelema.png" alt="Thelema"></div>
+          <div class="thumb" data-src="assets/wuwa.png"><img src="assets/wuwa.png" alt="Wuwa"></div>
+        </div>
+
+
+        <h2>Border</h2>
+        <div class="control-row"><input type="checkbox" id="borderToggle"> Enable</div>
+        <div class="control-row"><label>Width <input type="range" id="borderWidth" min="0" max="50" value="8"></label></div>
+        <div class="control-row"><label>Color <input type="color" id="borderColor" value="#ffffff"></label></div>
+
+        <div class="control-row">
+        <label>Shape 
+        <select id="borderShape">
+            <option value="square">Square</option>
+            <option value="circle">Circle</option>
+        </select>
+        </label>
+        </div>
+
+        <div class="control-row">
+        <label>Style 
+        <select id="borderStyle">
+            <option value="solid">Solid</option>
+            <option value="dotted">Dotted</option>
+            <option value="dashed">Dashed</option>
+            <option value="pattern">Pattern</option>
+        </select>
+        </label>
+        </div>
+
+        <label class="file-btn">Upload Pattern
+        <input type="file" id="borderPatternUpload" accept="image/*">
+        </label>
+
+
+        <h2>Actions</h2>
+        <button id="exportBtn" class="primary">Export PNG</button>
+        <button id="undoBtn">Undo</button>
+        <button id="redoBtn">Redo</button>
+        <button id="centerBtn">Center Object</button>
+        <button id="bringForward">Bring Forward</button>
+        <button id="sendBackward">Send Backward</button>
+        <button id="deleteObj">Delete Selected</button>
+      </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <span class="hint">Built with Fabric.js — by AmDev</span>
+    </footer>
+  </div>
+
+  <script src="js/canvas.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/stickers.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
